@@ -1,7 +1,7 @@
 # -*- mode: Python -*-
 
 allow_k8s_contexts(k8s_context())
-default_registry(os.environ.get('DOCKER_REGISTRY', 'localhost:5000'))
+default_registry(os.environ.get('TILT_DOCKER_REGISTRY', 'localhost:5000'))
 docker_build('example-go-image', '.', dockerfile='deployments/Dockerfile')
 k8s_yaml('deployments/kubernetes.yaml')
 k8s_resource('example-go', port_forwards=8000)
